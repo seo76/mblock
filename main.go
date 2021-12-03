@@ -38,7 +38,7 @@ func (bc *Blockchain) AddBlock(data string) {
 	bc.blocks = append(bc.blocks, newBlock)
 }
 
-func NewGenesisBlock() *Block {
+func NewGenesisBlock() *Block { //데이터입력1
 	return NewBlock("Genesis Block", []byte{})
 }
 
@@ -47,10 +47,12 @@ func NewBlockchain() *Blockchain {
 }
 
 func main() {
+	defer fmt.Println("done")
+
 	bc := NewBlockchain()
 
 	bc.AddBlock("Send 1 BTC to Ivan")
-	bc.AddBlock("Send 2 more BTC to Ivan")
+	bc.AddBlock("Send 2 more BTC to Ivan") //데이터입력2
 
 	for _, block := range bc.blocks {
 		fmt.Printf("Prev. hash: %x\n", block.PrevBlockHash)
